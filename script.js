@@ -1,87 +1,41 @@
-// ===================================
-// ClipPilot Landing Page JavaScript
-// ===================================
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('[data-nav-links]');
 
+if (navToggle && navLinks) {
+  navToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.textContent = open ? 'Close' : 'Menu';
+  });
 
-// FAQ Accordion
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.textContent = 'Menu';
+  }));
+}
 
-const faqButtons = document.querySelectorAll(".faq-question");
-
-faqButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-        const item = button.parentElement;
-
-        document.querySelectorAll(".faq-item").forEach(faq => {
-            if(faq !== item){
-                faq.classList.remove("active");
-            }
-        });
-
-        item.classList.toggle("active");
-
+const revealItems = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     });
+  }, { threshold: 0.12 });
+  revealItems.forEach(item => observer.observe(item));
+} else {
+  revealItems.forEach(item => item.classList.add('visible'));
+}
 
-});
+const accessForm = document.querySelector('#access-form');
+const formStatus = document.querySelector('.form-status');
 
-
-// Scroll Reveal Animation
-
-const revealElements = document.querySelectorAll(
-    ".feature-card, .dashboard, .mockup-window, .email-window, .section-heading"
-);
-
-revealElements.forEach(element => {
-    element.classList.add("fade-in");
-});
-
-
-const observer = new IntersectionObserver(
-    entries => {
-
-        entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-                entry.target.classList.add("visible");
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    },
-    {
-        threshold:0.15
-    }
-);
-
-
-revealElements.forEach(element => {
-    observer.observe(element);
-});
-
-
-// Smooth navigation fallback
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", function(e){
-
-        const target = document.querySelector(this.getAttribute("href"));
-
-        if(target){
-
-            e.preventDefault();
-
-            target.scrollIntoView({
-                behavior:"smooth"
-            });
-
-        }
-
-    });
-
-});
+if (accessForm && formStatus) {
+  accessForm.addEventListener('submit', event => {
+    if (!accessForm.action.includes('YOUR_FORM_ID')) return;
+    event.preventDefault();
+    formStatus.textContent = 'Form setup is almost complete: add your Formspree form ID in index.html first.';
+  });
+}
