@@ -10,7 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-    .audience-grid, .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+    .audience-grid { grid-template-columns: 1.15fr 1fr; }
+    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
     @media (max-width: 1000px) {
       .audience-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -106,9 +107,8 @@
 
     <section id="teams" class="section">
       <div class="container">
-        <div class="section-intro reveal"><p class="eyebrow"><span></span> Who it is for</p><h2>Set up around the way you actually work.</h2><p>Use the lighter automated path when you are handling content alone, or add review and delivery controls when editors are involved.</p></div>
+        <div class="section-intro reveal"><p class="eyebrow"><span></span> Who it is for</p><h2>Built for high-output creator teams.</h2><p>Every stream creates hours of footage. ClipPilot turns it into a ranked, editor-ready delivery so your team can spend its time cutting the right moments instead of searching for them.</p></div>
         <div class="audience-grid">
-          <article class="audience-card reveal"><p class="card-kicker">Solo workflow</p><h3>Smaller streamers posting on their own</h3><p>Set your minimums once and let qualifying clips move from analysis to YouTube Shorts without watching a queue after every stream.</p><ul><li>Automatic clip analysis</li><li>Score-based posting rules</li><li>Hands-off Shorts uploads</li></ul></article>
           <article class="audience-card featured-audience reveal"><p class="card-kicker">Primary fit</p><h3>Established streamers with 1&ndash;3 editors</h3><p>Give your editors a reliable queue and a clean delivery after every stream, without making the streamer manage files all night.</p><ul><li>Approve, deny, or auto-approve clips</li><li>Organized stream-date folders</li><li>Reports your editors can open anywhere</li></ul></article>
           <article class="audience-card reveal"><p class="card-kicker">Agency workflow</p><h3>Editing agencies managing multiple creators</h3><p>Use the same review and delivery process across talent accounts while keeping each streamer&rsquo;s clips, rules, and reports separate.</p><ul><li>Settings per streamer</li><li>Consistent editor handoffs</li><li>A workflow that scales across accounts</li></ul></article>
         </div>
@@ -144,7 +144,7 @@
     <section id="apply" class="apply-section">
       <div class="container apply-layout"><div class="apply-copy reveal"><p class="eyebrow light"><span></span> Early access</p><h2>Build the workflow that fits.</h2><p>Tell us whether you want hands-off Shorts, an editor handoff, or a setup that does both. We will follow up with the right ClipPilot configuration.</p><div class="apply-note"><b>Two clear paths:</b> simple automation for a solo streamer, or review and delivery controls for creator teams and agencies.</div></div>
         <!-- Replace YOUR_FORM_ID with the form ID from your Formspree dashboard before publishing. -->
-        <form class="access-form reveal" id="access-form" action="https://formspree.io/f/mnpajavj" method="POST">
+        <form class="access-form reveal" id="access-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
           <div class="form-row"><label>Your name<input name="name" type="text" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label></div>
           <div class="form-row"><label>Twitch channel<input name="twitch_channel" type="text" placeholder="yourchannel" required></label><label>How often do you stream?<select name="stream_frequency" required><option value="" selected disabled>Select frequency</option><option>1–2 times per week</option><option>3–4 times per week</option><option>5+ times per week</option><option>Varies</option></select></label></div>
           <label>How do you want clips handled?<select name="editor_setup" required><option value="" selected disabled>Select a workflow</option><option>Automatic Shorts for my own channel</option><option>Delivered to one editor</option><option>Delivered to 2&ndash;3 editors</option><option>Managed across an agency or larger team</option></select></label>
