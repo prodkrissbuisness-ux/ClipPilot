@@ -33,9 +33,7 @@ const accessForm = document.querySelector('#access-form');
 const formStatus = document.querySelector('.form-status');
 
 if (accessForm && formStatus) {
-  accessForm.addEventListener('submit', event => {
-    if (!accessForm.action.includes('YOUR_FORM_ID')) return;
-    event.preventDefault();
-    formStatus.textContent = 'Form setup is almost complete: add your Formspree form ID in index.html first.';
+  accessForm.addEventListener('submit', () => {
+    formStatus.textContent = 'Sending your request...';
   });
 }
