@@ -11,7 +11,9 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .audience-grid { grid-template-columns: 1.15fr 1fr; }
-    .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+    .pricing-grid { grid-template-columns: repeat(4, 1fr); }
+    .trial-card { border-color: #8eddbb; background: linear-gradient(145deg, #f0fff8, #fbfffd); }
+    .trial-popular { background: #128561; }
     .metered-rate { margin: -9px 0 20px; color: #354ecf; font: 800 13px "DM Mono", monospace; }
     .package-pricing { display: grid; grid-template-columns: .9fr 1.1fr; gap: 45px; align-items: center; margin-top: 24px; padding: 28px 30px; border: 1px solid #d8deeb; border-radius: 17px; background: linear-gradient(135deg, #f7f9ff, #f1fbf7); }
     .package-pricing .card-kicker { margin-bottom: 10px; }
@@ -135,8 +137,9 @@
     </section>
 
     <section id="pricing" class="section pricing-section">
-      <div class="container"><div class="section-intro centered reveal"><p class="eyebrow"><span></span> Early-access pricing</p><h2>Start with organized clips. Add human review only when you need it.</h2><p>These introductory rates cover the automated monitoring, analysis, editor folders, and reports. Manual QA is metered separately because every clip is reviewed by a person.</p></div>
+      <div class="container"><div class="section-intro centered reveal"><p class="eyebrow"><span></span> Early-access pricing</p><h2>Give your editors better clips to start with&mdash;and the context to move faster.</h2><p>Every ClipPilot plan turns hours of stream footage into organized, analysis-backed clip deliveries your team can act on. Add hands-on QA when you want a human final check before anything moves forward.</p></div>
         <div class="pricing-grid">
+          <article class="price-card trial-card reveal"><p class="popular trial-popular">Limited time</p><h3>Free Trial</h3><p class="price-for">One streamer &middot; one clip delivery</p><p class="price"><sup>$</sup>0<span>to try it</span></p><ul><li>Up to 25 analyzed Twitch clips</li><li>Organized source clips ready to download</li><li>Portable HTML analytics report</li><li>See the full editor handoff before choosing a plan</li></ul><a class="button button-outline" href="#apply">Claim your free trial</a></article>
           <article class="price-card price-featured reveal"><p class="popular">Best fit</p><h3>Team</h3><p class="price-for">One streamer + editor team</p><p class="price"><sup>$</sup>49<span>/mo</span></p><ul><li>Up to 1,000 analyzed clips each month</li><li>Live and post-stream clip collection</li><li>Editor-ready raw folders</li><li>Portable HTML analytics reports</li><li>Human QA available separately</li></ul><a class="button" href="#apply">Request access</a></article>
           <article class="price-card reveal"><h3>Agency</h3><p class="price-for">Up to three streamers</p><p class="price"><sup>$</sup>99<span>/mo</span></p><ul><li>Up to 2,500 analyzed clips combined</li><li>Separate rules and folders per streamer</li><li>Consistent reports for every editor team</li><li>Additional channels quoted upfront</li><li>Human QA available separately</li></ul><a class="button button-outline" href="#apply">Talk to us</a></article>
           <article class="price-card concierge reveal"><h3>Manual QA</h3><p class="price-for">Human review before delivery or posting</p><p class="price"><sup>$</sup>99<span>monthly minimum</span></p><p class="metered-rate">+ $0.60 per reviewed clip</p><ul><li>Every clip waits for a manual decision</li><li>No time limit and no automatic approval</li><li>Approve or reject with review status saved</li><li>Usage is metered&mdash;never sold as unlimited</li></ul><a class="button button-outline" href="#apply">Add manual QA</a></article>
@@ -155,12 +158,12 @@
     </section>
 
     <section id="apply" class="apply-section">
-      <div class="container apply-layout"><div class="apply-copy reveal"><p class="eyebrow light"><span></span> Early access</p><h2>Build the workflow that fits.</h2><p>Tell us whether you want hands-off Shorts, an editor handoff, or a setup that does both. We will follow up with the right ClipPilot configuration.</p><div class="apply-note"><b>Two clear paths:</b> simple automation for a solo streamer, or review and delivery controls for creator teams and agencies.</div></div>
+      <div class="container apply-layout"><div class="apply-copy reveal"><p class="eyebrow light"><span></span> Early access</p><h2>See what your next stream could deliver.</h2><p>Start with the limited-time free trial or tell us what your editor workflow needs. We will follow up with the right ClipPilot setup for your channel and team.</p><div class="apply-note"><b>Free trial:</b> one streamer, up to 25 analyzed clips, organized source files, and a complete editor-ready report.</div></div>
         <!-- Replace YOUR_FORM_ID with the form ID from your Formspree dashboard before publishing. -->
         <form class="access-form reveal" id="access-form" action="https://formspree.io/f/mnpajavj" method="POST">
           <div class="form-row"><label>Your name<input name="name" type="text" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label></div>
           <div class="form-row"><label>Twitch channel<input name="twitch_channel" type="text" placeholder="yourchannel" required></label><label>How often do you stream?<select name="stream_frequency" required><option value="" selected disabled>Select frequency</option><option>1–2 times per week</option><option>3–4 times per week</option><option>5+ times per week</option><option>Varies</option></select></label></div>
-          <label>How do you want clips handled?<select name="editor_setup" required><option value="" selected disabled>Select a workflow</option><option>Automatic Shorts for my own channel</option><option>Automated package for one editor</option><option>Automated package for 2&ndash;3 editors</option><option>Bulk clip packages</option><option>Managed across an agency or larger team</option></select></label>
+          <label>How do you want clips handled?<select name="editor_setup" required><option value="" selected disabled>Select a workflow</option><option>Free trial &mdash; 25 analyzed clips</option><option>Automatic Shorts for my own channel</option><option>Automated package for one editor</option><option>Automated package for 2&ndash;3 editors</option><option>Package with manual QA</option><option>Managed across an agency or larger team</option></select></label>
           <label>Anything we should know? <span>Optional</span><textarea name="notes" rows="3" placeholder="Tell us about your content workflow."></textarea></label>
           <input type="hidden" name="_subject" value="New ClipPilot early-access request">
           <button class="button form-submit" type="submit">Request early access <b>&rarr;</b></button><p class="form-status" aria-live="polite"></p>
