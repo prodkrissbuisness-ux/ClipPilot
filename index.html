@@ -3,8 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Your stream ends. Your editor opens a prioritized clip delivery and already knows what to edit first.">
-  <title>ClipPilot | Give your editor a head start after every stream</title>
+  <title>Twitch Clip Management for Streamers &amp; Editors | ClipPilot</title>
+  <meta name="description" content="ClipPilot organizes and prioritizes Twitch clips after every stream, giving creators and editors faster handoffs for Shorts and long-form content.">
+  <link rel="canonical" href="https://clippilot.site/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="application-name" content="ClipPilot">
+  <meta name="theme-color" content="#101525">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ClipPilot">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://clippilot.site/">
+  <meta property="og:title" content="Twitch Clip Management for Streamers &amp; Editors | ClipPilot">
+  <meta property="og:description" content="Turn every Twitch stream into an organized, prioritized clip handoff so editors can start creating sooner.">
+  <meta property="og:image" content="https://clippilot.site/assets/clippilot-dashboard-preview.png">
+  <meta property="og:image:width" content="1091">
+  <meta property="og:image:height" content="533">
+  <meta property="og:image:alt" content="ClipPilot dashboard with Twitch clips ranked for editor review">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Twitch Clip Management for Streamers &amp; Editors | ClipPilot">
+  <meta name="twitter:description" content="Turn every Twitch stream into an organized, prioritized clip handoff so editors can start creating sooner.">
+  <meta name="twitter:image" content="https://clippilot.site/assets/clippilot-dashboard-preview.png">
+  <meta name="twitter:image:alt" content="ClipPilot dashboard with Twitch clips ranked for editor review">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -25,6 +47,9 @@
     .package-grid small { color: #737c8e; font-size: 10px; }
     .real-dashboard-preview { background: #11182d; transform: rotate(.5deg); }
     .real-dashboard-preview img { display: block; width: 100%; height: auto; }
+    .skip-link { position: fixed; z-index: 1000; top: 10px; left: 10px; padding: 10px 14px; border-radius: 8px; background: #fff; color: #101525; font-weight: 800; box-shadow: 0 24px 70px rgba(20,29,57,.11); transform: translateY(-160%); }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible { outline: 3px solid #f2b84b; outline-offset: 3px; }
     @media (max-width: 1000px) {
       .audience-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
       .package-pricing { grid-template-columns: 1fr; gap: 22px; }
@@ -33,6 +58,10 @@
       .audience-grid, .pricing-grid { grid-template-columns: 1fr; }
       .package-pricing { padding: 22px; }
       .package-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -43,13 +72,49 @@
     gtag('js', new Date());
     gtag('config', 'G-SLRYLNRJ8P');
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://clippilot.site/#organization",
+        "name": "ClipPilot",
+        "url": "https://clippilot.site/"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://clippilot.site/#website",
+        "url": "https://clippilot.site/",
+        "name": "ClipPilot",
+        "description": "Twitch clip management and editor handoffs for streamers, creators, and editing teams.",
+        "inLanguage": "en-US",
+        "publisher": { "@id": "https://clippilot.site/#organization" }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://clippilot.site/#service",
+        "name": "ClipPilot Twitch Clip Management",
+        "serviceType": "Twitch clip organization and editor handoff service",
+        "url": "https://clippilot.site/",
+        "description": "ClipPilot organizes and prioritizes Twitch clips after each stream for creators and video editors.",
+        "provider": { "@id": "https://clippilot.site/#organization" },
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "Twitch streamers, creators, and video editors"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#top" aria-label="ClipPilot home"><span class="brand-mark">C</span>ClipPilot</a>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">Menu</button>
-      <div class="nav-links" data-nav-links>
+      <button class="nav-toggle" type="button" aria-label="Open menu" aria-controls="main-navigation" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="main-navigation" data-nav-links>
         <a href="#workflow">What your team gets</a>
         <a href="#teams">Who it is for</a>
         <a href="#pricing">Pricing</a>
@@ -58,11 +123,11 @@
     </nav>
   </header>
 
-  <main id="top">
+  <main id="main-content" tabindex="-1">
     <section class="hero section container">
       <div class="hero-copy reveal">
         <p class="eyebrow"><span></span> Built for faster editor handoffs</p>
-        <h1>Your stream ends. <em>Your editor already knows what to edit.</em></h1>
+        <h1>Your stream ends. <em>Your editor already knows which Twitch clips to edit.</em></h1>
         <p class="hero-text">ClipPilot turns every broadcast into a clear, prioritized handoff. Your editor gets the source clips, context, and strongest moments in one place&mdash;so they can start cutting instead of spending hours searching.</p>
         <div class="hero-actions">
           <a class="button" href="#apply">Get your free clip delivery <b>&rarr;</b></a>
@@ -76,21 +141,21 @@
       </div>
 
       <div class="product-preview real-dashboard-preview reveal">
-        <img src="assets/clippilot-dashboard-preview.png" alt="ClipPilot dashboard showing ranked Twitch clips with views, review status, and priority scores">
+        <img src="assets/clippilot-dashboard-preview.png" width="1091" height="533" alt="ClipPilot dashboard showing ranked Twitch clips with views, review status, and priority scores" decoding="async" fetchpriority="high">
       </div>
     </section>
 
-    <section class="trusted-strip">
+    <div class="trusted-strip" aria-label="Product benefits">
       <div class="container"><p>Give every stream a clean path from broadcast to finished content.</p><div><span>LESS SEARCHING</span><span>FASTER EDITS</span><span>CLEAR HANDOFFS</span><span>CONSISTENT OUTPUT</span></div></div>
-    </section>
+    </div>
 
     <section id="workflow" class="section workflow-section">
       <div class="container">
         <div class="section-intro reveal"><p class="eyebrow"><span></span> After every stream</p><h2>From stream ending to editor starting&mdash;without the footage hunt.</h2><p>Your team receives a dependable starting point after every broadcast, whether an editor is preparing the next upload or your channel publishes Shorts automatically.</p></div>
         <div class="workflow-grid">
-          <article class="workflow-card reveal"><span class="step">01</span><div class="workflow-icon signal-icon"><i></i><i></i><i></i></div><h3>Stream as usual</h3><p>Stay focused on the broadcast. ClipPilot keeps track of the moments viewers respond to, including clips that surface after you go offline.</p></article>
-          <article class="workflow-card reveal"><span class="step">02</span><div class="workflow-icon score-icon">84</div><h3>The best moments rise first</h3><p>Your editor sees a clear order of priority, useful context, and the original source&mdash;without opening every clip to find out what happened.</p></article>
-          <article class="workflow-card reveal"><span class="step">03</span><div class="workflow-icon folder-icon"><i></i><i></i><i></i></div><h3>Your editor starts immediately</h3><p>The finished handoff arrives organized by streamer and stream date, ready to review, edit, and turn into content.</p></article>
+          <article class="workflow-card reveal"><span class="step">01</span><div class="workflow-icon signal-icon" aria-hidden="true"><i></i><i></i><i></i></div><h3>Stream as usual</h3><p>Stay focused on the broadcast. ClipPilot keeps track of the moments viewers respond to, including clips that surface after you go offline.</p></article>
+          <article class="workflow-card reveal"><span class="step">02</span><div class="workflow-icon score-icon" aria-hidden="true">84</div><h3>The best moments rise first</h3><p>Your editor sees a clear order of priority, useful context, and the original source&mdash;without opening every clip to find out what happened.</p></article>
+          <article class="workflow-card reveal"><span class="step">03</span><div class="workflow-icon folder-icon" aria-hidden="true"><i></i><i></i><i></i></div><h3>Your editor starts immediately</h3><p>The finished handoff arrives organized by streamer and stream date, ready to review, edit, and turn into content.</p></article>
         </div>
       </div>
     </section>
@@ -156,7 +221,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container footer-row"><a class="brand" href="#top"><span class="brand-mark">C</span>ClipPilot</a><p>&copy; 2026 ClipPilot. Your editor&rsquo;s head start after every stream.</p><a href="#top" class="back-top">Back to top &uarr;</a></div></footer>
+  <footer class="footer"><div class="container footer-row"><a class="brand" href="#top" aria-label="ClipPilot home"><span class="brand-mark">C</span>ClipPilot</a><p>&copy; 2026 ClipPilot. Your editor&rsquo;s head start after every stream.</p><a href="#top" class="back-top">Back to top &uarr;</a></div></footer>
   <script src="script.js"></script>
 </body>
 </html>

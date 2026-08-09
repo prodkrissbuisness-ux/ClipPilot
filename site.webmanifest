@@ -1,0 +1,18 @@
+{
+  "name": "ClipPilot",
+  "short_name": "ClipPilot",
+  "description": "Twitch clip management and editor handoffs for streamers and creators.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfcfe",
+  "theme_color": "#101525",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
