@@ -23,6 +23,8 @@
     .package-grid span { display: grid; gap: 3px; padding: 15px 10px; border: 1px solid #dce2ed; border-radius: 11px; background: #fff; text-align: center; }
     .package-grid b { color: #101525; font: 800 22px/1 Manrope, sans-serif; }
     .package-grid small { color: #737c8e; font-size: 10px; }
+    .real-dashboard-preview { background: #11182d; transform: rotate(.5deg); }
+    .real-dashboard-preview img { display: block; width: 100%; height: auto; }
     @media (max-width: 1000px) {
       .audience-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
       .package-pricing { grid-template-columns: 1fr; gap: 22px; }
@@ -73,27 +75,8 @@
         </ul>
       </div>
 
-      <div class="product-preview reveal" aria-label="ClipPilot product workflow preview">
-        <div class="preview-bar"><span class="preview-dots"><i></i><i></i><i></i></span><span>ClipPilot / Editor Handoff</span><span class="live-dot">Delivery ready</span></div>
-        <div class="preview-body">
-          <aside class="preview-sidebar"><div class="preview-logo">C</div><span class="side-active"></span><span></span><span></span><span></span></aside>
-          <div class="preview-main">
-            <div class="preview-heading"><div><p>Editor Handoff</p><small>The strongest moments from the latest stream</small></div><span class="queue-count">03 ready</span></div>
-            <div class="preview-tabs"><span class="active">Start here</span><span>Newest moments</span><span>Full delivery</span></div>
-            <article class="queue-card">
-              <div class="clip-thumb thumb-one"><span>LIVE</span><b>0:42</b></div>
-              <div class="queue-copy"><p>Clutch final-round comeback</p><small>Top editing priority &middot; source clip included</small><div class="score-line"><span>Priority <strong>84</strong></span><span>Opening <strong>Strong</strong></span><span>Context <strong>Low</strong></span></div></div>
-              <div class="queue-actions"><button type="button" tabindex="-1">Use clip</button><button type="button" class="ghost" tabindex="-1">Skip</button></div>
-            </article>
-            <article class="queue-card muted-card">
-              <div class="clip-thumb thumb-two"><b>0:31</b></div>
-              <div class="queue-copy"><p>Unexpected team reaction</p><small>Context and original link included</small><div class="score-line"><span>Priority <strong>76</strong></span><span>Reaction <strong>Strong</strong></span></div></div>
-              <div class="queue-actions"><button type="button" tabindex="-1">Use clip</button><button type="button" class="ghost" tabindex="-1">Skip</button></div>
-            </article>
-            <div class="preview-report"><span class="report-icon">+</span><div><b>Everything your editor needs</b><small>Source clips, original links, context, titles, and priorities</small></div><span>&rarr;</span></div>
-          </div>
-        </div>
-        <p class="preview-caption">One place to review the delivery, understand each moment, and begin editing.</p>
+      <div class="product-preview real-dashboard-preview reveal">
+        <img src="assets/clippilot-dashboard-preview.png" alt="ClipPilot dashboard showing ranked Twitch clips with views, review status, and priority scores">
       </div>
     </section>
 
@@ -115,7 +98,7 @@
     <section class="section score-section">
       <div class="container score-layout">
         <div class="score-copy reveal"><p class="eyebrow"><span></span> A clear place to start</p><h2>Your editor opens the delivery and knows what deserves attention first.</h2><p>No hour-long scavenger hunt. Every clip arrives with a simple editing priority and enough context to understand the moment before pressing play.</p><p>Your team still makes the creative decisions. ClipPilot gives them a <strong>better first cut of the footage</strong>, so their time goes into editing instead of searching.</p><a href="#faq" class="text-link">See how priorities help editors <span>&rarr;</span></a></div>
-        <div class="score-panel reveal"><div class="panel-top"><span>Editing priority</span><b>84<span>/100</span></b></div><div class="score-ring"><div><strong>84</strong><small>start here</small></div></div><div class="metric-list"><div><span>Opening</span><b>Strong</b></div><div><span>Holds attention</span><b>Strong</b></div><div><span>Easy to share</span><b>High</b></div><div><span>Context needed</span><b class="low-context">Low</b></div></div></div>
+        <div class="score-panel reveal"><div class="panel-top"><span>Editing priority</span><b>84<span>/100</span></b></div><div class="score-ring"><div><strong>84</strong><small>priority</small></div></div><div class="metric-list"><div><span>Opening</span><b>Strong</b></div><div><span>Holds attention</span><b>Strong</b></div><div><span>Easy to share</span><b>High</b></div><div><span>Context needed</span><b class="low-context">Low</b></div></div></div>
       </div>
     </section>
 
