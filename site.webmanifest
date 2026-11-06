@@ -1,7 +1,7 @@
 {
   "name": "ClipPilot",
   "short_name": "ClipPilot",
-  "description": "Twitch clip management and editor handoffs for streamers and creators.",
+  "description": "Your stream's best moments, turned into captioned Shorts. Coming soon.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

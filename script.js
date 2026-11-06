@@ -1,41 +1,48 @@
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('[data-nav-links]');
+// Waitlist signups go to the clippilot-waitlist Cloudflare Worker (D1).
+const ENDPOINT = 'https://clippilot-waitlist.commonpilot.workers.dev/signup';
 
-if (navToggle && navLinks) {
-  navToggle.addEventListener('click', () => {
-    const open = navLinks.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    navToggle.textContent = open ? 'Close' : 'Menu';
-  });
+const form = document.getElementById('waitlist');
+const status = document.getElementById('status');
+const button = form.querySelector('button');
 
-  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
-    navToggle.setAttribute('aria-label', 'Open menu');
-    navToggle.textContent = 'Menu';
-  }));
+function show(text, kind) {
+  status.textContent = text;
+  status.className = 'status ' + (kind || '');
 }
 
-const revealItems = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const email = form.email.value.trim();
+
+  if (!form.email.checkValidity() || !email) {
+    show('Please enter a valid email.', 'err');
+    form.email.focus();
+    return;
+  }
+
+  const params = new URLSearchParams(location.search);
+  const source = params.get('utm_source') || params.get('ref') || document.referrer || '';
+
+  button.disabled = true;
+  show('Adding you...');
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, website: form.website.value, source }),
     });
-  }, { threshold: 0.12 });
-  revealItems.forEach(item => observer.observe(item));
-} else {
-  revealItems.forEach(item => item.classList.add('visible'));
-}
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.ok) throw new Error(data.error || 'failed');
 
-const accessForm = document.querySelector('#access-form');
-const formStatus = document.querySelector('.form-status');
-
-if (accessForm && formStatus) {
-  accessForm.addEventListener('submit', () => {
-    formStatus.textContent = 'Sending your request...';
-  });
-}
+    form.reset();
+    show("You're on the list. We'll email you when it's ready.", 'ok');
+    if (typeof gtag === 'function') gtag('event', 'sign_up', { method: 'waitlist' });
+  } catch (err) {
+    show(err.message === 'invalid_email'
+      ? 'Please enter a valid email.'
+      : 'Something went wrong. Please try again.', 'err');
+  } finally {
+    button.disabled = false;
+  }
+});
