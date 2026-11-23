@@ -147,3 +147,16 @@ h1 {
   .waitlist input[type="email"] { flex: none; }
   .waitlist button { width: 100%; }
 }
+
+/* legal pages */
+.legal { padding-top: 8vh; width: min(720px, calc(100% - 32px)); }
+.legal h1 { font-size: clamp(30px, 6vw, 42px); margin-top: 32px; }
+.legal h2 { margin: 32px 0 8px; font-size: 20px; letter-spacing: -.02em; }
+.legal p, .legal li { color: #2d3344; }
+.legal ul { padding-left: 22px; }
+.legal a { color: var(--blue-dark); }
+.legal a.brand { color: inherit; }
+.legal .updated { color: var(--muted); font-size: 15px; }
+
+.footer a { color: inherit; }
+.footer nav { display: flex; gap: 16px; justify-content: center; margin-bottom: 6px; }
